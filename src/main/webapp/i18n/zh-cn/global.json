@@ -6,8 +6,19 @@
             "home": "首页",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "数据",
+                "main": "Master Info",
+                "servert": "Servert Roles",
+                "plans": "Servert Plans",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "simulation":{
+            	"main": "Simulation Servert",
+            	"atk": "Simulation Atk",
+            	"servert": "Simulation Servert"
+            },
+            "activities":{
+				"main": "Activities",
+				"history": "Activities History"            	
             },
             "account": {
                 "main": "账号",
