@@ -1,0 +1,43 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+        	<div class="home-box box">
+        		<ul class="list">
+        			<li><span class="hipster img-responsive img-rounded img1 slide"></span></li>
+        			<li><span class="hipster img-responsive img-rounded img2 slide"></span></li>
+        			<li><span class="hipster img-responsive img-rounded img3 slide"></span></li>
+        			<li><span class="hipster img-responsive img-rounded img4 slide"></span></li>
+        		</ul>
+        		<!-- <div class="index">
+        			<a href="javascript:" class="index_1">1</a>
+			        <a href="javascript:" class="index_2">2</a>
+			        <a href="javascript:" class="index_3">3</a>
+			        <a href="javascript:" class="index_4">4</a>
+        		</div> -->
+        	</div>
+            
+        </div>
+        <div class="col-md-8">
+            <h1 data-translate="home.title">Welcome, Servert Wiki!</h1>
+            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
+
+            <div ng-switch="vm.isAuthenticated()">
+                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>
+                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                </div>
+            </div>
+
+            <p data-translate="home.question">
+                If you have any question on Servert Wiki:
+            </p>
+
+            <ul>
+                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener" data-translate="home.link.servertRoles">Master's Servert Roles</a></li>
+                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener" data-translate="home.link.servertSimulation">Servert Simulation</a></li>
+                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener" data-translate="home.link.ServertPlans">Servert Plans</a></li>
+                <li><a href="https://twitter.com/java_hipster" target="_blank" rel="noopener" data-translate="home.link.activities">FGO Activities</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>

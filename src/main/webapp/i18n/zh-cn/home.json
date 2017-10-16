@@ -1,0 +1,18 @@
+{
+    "home": {
+        "title": "欢迎, Servert Wiki!",
+        "subtitle": "这里是首页",
+        "logged": {
+            "message": "MASTER,您目前是以 \"{{username}}\" 账号登录."
+        },
+        "question": "如果您有任何有关 Servert Wiki 的问题, 可以查阅下列资源:",
+        "link": {
+            "servertRoles": "Master, 您的英灵库",
+            "servertSimulation": "英灵模拟",
+            "ServertPlans": "Master, 您的英灵计划",
+            "activities": "FGO 活动列表"
+        },
+        "like": "如果您喜欢 JHipster, 请记得给我们加星在",
+        "github": "GitHub"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "home": {
+        "title": "Welcome, Servert Wiki!",
+        "subtitle": "This is your homepage",
+        "logged": {
+            "message": "You are logged in as master \"{{username}}\"."
+        },
+        "question": "If you have any question on Servert Wiki:",
+        "link": {
+            "servertRoles": "Master's Servert Roles",
+            "servertSimulation": "Servert Simulation",
+            "ServertPlans": "Master's Servert Plan",
+            "activities": "FGO Activities"
+        },
+        "like": "If you like JHipster, don't forget to give us a star on",
+        "github": "GitHub"
+    }
+}
