@@ -10,18 +10,9 @@ CREATE TABLE `w_servert_role` (
   `skill_2_level` int(11) NOT NULL DEFAULT '1',
   `skill_3_level` int(11) NOT NULL DEFAULT '1',
   `tool_level` int(11) NOT NULL DEFAULT '1',
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `created_by` varchar(45) DEFAULT NULL,
-  `last_modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_by` varchar(45) NOT NULL,
   `last_modified_by` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `login__UNIQUE` (`login_`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='英灵列表';
-
-
-ALTER TABLE `servertwiki`.`w_servert_role` 
-CHANGE COLUMN `create_date` `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ;
-
-ALTER TABLE `servertwiki`.`w_servert_role` 
-DROP INDEX `login__UNIQUE` ;
-
+  `last_modified_date` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='英灵列表'
