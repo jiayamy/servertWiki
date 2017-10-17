@@ -44,6 +44,7 @@ public class CacheConfiguration {
             cm.createCache(com.servert.wiki.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.servert.wiki.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
+            cm.createCache(com.servert.wiki.domain.entities.ServertRole.class.getName(), jcacheConfiguration);
         };
     }
 }

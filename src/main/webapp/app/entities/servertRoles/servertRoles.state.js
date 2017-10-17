@@ -17,8 +17,8 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/admin/user-management/user-management.html',
-                    controller: 'UserManagementController',
+                    templateUrl: 'app/entities/servertRoles/servertRoles.html',
+                    controller: 'ServertRolesController',
                     controllerAs: 'vm'
                 }
             },            params: {
