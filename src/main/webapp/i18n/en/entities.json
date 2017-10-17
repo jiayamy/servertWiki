@@ -1,0 +1,5 @@
+{
+    "entities": {
+        "created": "A new Servert is created with identifier {{ param }}"
+    }
+}

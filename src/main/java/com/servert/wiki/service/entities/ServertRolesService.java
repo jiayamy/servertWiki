@@ -23,4 +23,8 @@ public class ServertRolesService {
 	public Page<ServertRole> getServertRolesByLogin(Pageable pageable){
 		return servertRolesRepository.findAllByLogin(pageable, SecurityUtils.getCurrentUserLogin());
 	}
+	
+	public void saveServertRoles(ServertRole servertRole){
+		servertRolesRepository.save(servertRole);
+	}
 }
