@@ -1,78 +1,49 @@
-package com.servert.wiki.domain.entities;
+package com.servert.wiki.web.rest.vm;
 
 import java.io.Serializable;
+import java.time.Instant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
 import com.servert.wiki.config.Constants;
-import com.servert.wiki.domain.AbstractAuditingEntity;
 
-@Entity
-@Table(name = "w_servert_role")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "servertRole")
-public class ServertRole extends AbstractAuditingEntity implements Serializable{
-	
+public class ServertRoleVM implements Serializable{
+
 	private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
     private Long id;
     
-    @NotNull
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
-    @Column(name = "login_", length = 50, unique = true, nullable = false)
     private String login;
     
-    @NotNull
     @Size(max = 50)
-    @Column(name = "name_",length = 50)
     private String name;
     
-    @NotNull
-    @Column(name = "type_",length = 11)
     private Integer type;
     
-    @NotNull
-    @Column(name = "atk_",length = 20)
     private Long atk;
     
-    @NotNull
-    @Column(name = "hp_",length = 20)
     private Long hp;
     
-    @NotNull
-    @Column(name = "level_",length = 11)
     private Integer level;
     
-    @NotNull
-    @Column(name = "skill_1_level",length = 11)
     private Integer skillOneLevel;
     
-    @NotNull
-    @Column(name = "skill_2_level",length = 11)
     private Integer skillTwoLevel;
     
-    @NotNull
-    @Column(name = "skill_3_level",length = 11)
     private Integer skillThreeLevel;
     
-    @NotNull
-    @Column(name = "tool_level",length = 11)
     private Integer toolLevel;
+    
+    private String createdBy;
+
+    private Instant createdDate;
+
+    private String lastModifiedBy;
+
+    private Instant lastModifiedDate;
 
 	public Long getId() {
 		return id;
@@ -160,6 +131,38 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
 
 	public void setToolLevel(Integer toolLevel) {
 		this.toolLevel = toolLevel;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Instant getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Instant createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	public void setLastModifiedBy(String lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
+	}
+
+	public Instant getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+
+	public void setLastModifiedDate(Instant lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
     
 }

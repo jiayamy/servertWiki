@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.servert.wiki.domain.entities.ServertRole;
 import com.servert.wiki.repository.entities.ServertRolesRepository;
 import com.servert.wiki.security.SecurityUtils;
+import com.servert.wiki.web.rest.vm.ServertRoleVM;
 
 @Service
 public class ServertRolesService {
@@ -24,7 +25,19 @@ public class ServertRolesService {
 		return servertRolesRepository.findAllByLogin(pageable, SecurityUtils.getCurrentUserLogin());
 	}
 	
-	public void saveServertRoles(ServertRole servertRole){
+	public ServertRole saveServertRoles(ServertRoleVM servertRoleVM){
+		ServertRole servertRole = new ServertRole();
+		servertRole.setAtk(servertRoleVM.getAtk());
+		servertRole.setHp(servertRoleVM.getHp());
+		servertRole.setLevel(servertRoleVM.getLevel());
+		servertRole.setLogin(SecurityUtils.getCurrentUserLogin());
+		servertRole.setName(servertRoleVM.getName());
+		servertRole.setSkillOneLevel(servertRoleVM.getSkillOneLevel());
+		servertRole.setSkillThreeLevel(servertRoleVM.getSkillThreeLevel());
+		servertRole.setSkillTwoLevel(servertRoleVM.getSkillTwoLevel());
+		servertRole.setToolLevel(servertRoleVM.getToolLevel());
+		servertRole.setType(servertRoleVM.getType());
 		servertRolesRepository.save(servertRole);
+		return servertRole;
 	}
 }

@@ -26,6 +26,7 @@ import com.servert.wiki.security.SecurityUtils;
 import com.servert.wiki.service.entities.ServertRolesService;
 import com.servert.wiki.web.rest.util.HeaderUtil;
 import com.servert.wiki.web.rest.util.PaginationUtil;
+import com.servert.wiki.web.rest.vm.ServertRoleVM;
 
 import io.swagger.annotations.ApiParam;
 
@@ -34,6 +35,8 @@ import io.swagger.annotations.ApiParam;
 public class ServertRolesResouce {
 	
 	private final Logger logger = LoggerFactory.getLogger(ServertRolesResouce.class);
+	
+	private static final String ENTITY_NAME = "entities";
 	
 	@Inject
 	private ServertRolesService servertRolesService;
@@ -49,10 +52,17 @@ public class ServertRolesResouce {
 	
 	@PostMapping("/addServertRole")
 	@Timed
-	public ResponseEntity saveServertRoles(@Valid @RequestBody  ServertRole servertRole) throws URISyntaxException{
-		
-		return ResponseEntity.created(new URI("/api/users/" + servertRole.getName()))
-				.headers(HeaderUtil.createAlert( "entities.created", servertRole.getName()))
-				.body(servertRole);
+	public ResponseEntity saveServertRoles(@Valid @RequestBody  ServertRoleVM servertRoleVM) throws URISyntaxException{
+		logger.info(SecurityUtils.getCurrentUserLogin() + " REST request to add Servert Roles");
+		if (servertRoleVM.getId() != null) {
+			return ResponseEntity.badRequest()
+	                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new servert cannot already have an ID"))
+	                .body(null);
+		}else{
+			ServertRole servertRole = servertRolesService.saveServertRoles(servertRoleVM);
+			return ResponseEntity.created(new URI("/api/users/" + servertRole.getName()))
+					.headers(HeaderUtil.createAlert( "entities.created", servertRole.getName()))
+					.body(servertRoleVM);
+		}
 	}
 }

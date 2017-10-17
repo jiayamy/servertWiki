@@ -21,3 +21,7 @@ CREATE TABLE `w_servert_role` (
 
 ALTER TABLE `servertwiki`.`w_servert_role` 
 CHANGE COLUMN `create_date` `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ;
+
+ALTER TABLE `servertwiki`.`w_servert_role` 
+DROP INDEX `login__UNIQUE` ;
+
