@@ -1,5 +1,20 @@
 {
     "entities": {
-        "created": "A new Servert is created with identifier {{ param }}"
+    	"home": {
+    		"title": "英灵列表",
+    		"createLabel": "新增"
+    	},
+        "created": "A new Servert is created with identifier {{ param }}",
+        "servert": {
+        	"name": "英灵",
+        	"type": "职介",
+        	"toolLevel": "宝具",
+        	"level": "等级",
+        	"atk": "攻击",
+        	"hp": "生命",
+        	"skillOneLevel": "技能1",
+        	"skillTwoLevel": "技能2",
+        	"skillThreeLevel": "技能3"
+        }
     }
 }

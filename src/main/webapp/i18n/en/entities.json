@@ -1,5 +1,20 @@
 {
     "entities": {
-        "created": "A new Servert is created with identifier {{ param }}"
+    	"home": {
+    		"title": "Servert Roles",
+    		"createLabel": "New Servert"
+    	},
+        "created": "A new Servert is created with identifier {{ param }}",
+        "servert": {
+        	"name": "Name",
+        	"type": "Class",
+        	"toolLevel": "Noble Phantasm",
+        	"level": "Level",
+        	"atk": "Atk",
+        	"hp": "Hp",
+        	"skillOneLevel": "SkillOneLevel",
+        	"skillTwoLevel": "SkillTwoLevel",
+        	"skillThreeLevel": "SkillThreeLevel"
+        }
     }
 }

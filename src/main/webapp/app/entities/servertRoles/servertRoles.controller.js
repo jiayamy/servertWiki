@@ -3,19 +3,18 @@
 
     angular
         .module('servertWikiApp')
-        .controller('ServertRolesController', UserManagementController);
+        .controller('ServertRolesController', ServertRolesController);
 
-    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'AlertService', '$state', 'pagingParams', 'paginationConstants', 'JhiLanguageService'];
+    ServertRolesController.$inject = ['Principal', 'ServertRolesService', 'ParseLinks', 'AlertService', '$state', 'pagingParams', 'paginationConstants', 'JhiLanguageService'];
 
-    function UserManagementController(Principal, User, ParseLinks, AlertService, $state, pagingParams, paginationConstants, JhiLanguageService) {
+    function ServertRolesController(Principal, ServertRolesService, ParseLinks, AlertService, $state, pagingParams, paginationConstants, JhiLanguageService) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         vm.currentAccount = null;
         vm.languages = null;
         vm.loadAll = loadAll;
-        vm.setActive = setActive;
-        vm.users = [];
+        vm.serverts = [];
         vm.page = 1;
         vm.totalItems = null;
         vm.clear = clear;
@@ -34,16 +33,9 @@
             vm.currentAccount = account;
         });
 
-        function setActive (user, isActivated) {
-            user.activated = isActivated;
-            User.update(user, function () {
-                vm.loadAll();
-                vm.clear();
-            });
-        }
 
         function loadAll () {
-            User.query({
+        	ServertRolesService.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -55,7 +47,7 @@
             vm.totalItems = headers('X-Total-Count');
             vm.queryCount = vm.totalItems;
             vm.page = pagingParams.page;
-            vm.users = data;
+            vm.serverts = data;
         }
 
         function onError(error) {

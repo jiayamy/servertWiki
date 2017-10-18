@@ -10,7 +10,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('servertRoles', {
             parent: 'entity',
-            url: '/user-management?page&sort',
+            url: '/servertRoles?page&sort',
             data: {
                 authorities: ['ROLE_ADMIN'],
                 pageTitle: 'userManagement.home.title'
@@ -41,7 +41,7 @@
                     };
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('user-management');
+                    $translatePartialLoader.addPart('entities');
                     return $translate.refresh();
                 }]
 
