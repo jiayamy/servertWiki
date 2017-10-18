@@ -1,5 +1,7 @@
 package com.servert.wiki.service.entities;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -39,5 +41,23 @@ public class ServertRolesService {
 		servertRole.setType(servertRoleVM.getType());
 		servertRolesRepository.save(servertRole);
 		return servertRole;
+	}
+	
+	public Optional<ServertRoleVM> updateServertRole(ServertRoleVM servertRoleVM){
+		return Optional.of(servertRolesRepository
+				.findOne(servertRoleVM.getId()))
+				.map(servertRole -> {
+					servertRole.setAtk(servertRoleVM.getAtk());
+					servertRole.setHp(servertRoleVM.getHp());
+					servertRole.setLevel(servertRoleVM.getLevel());
+					servertRole.setName(servertRoleVM.getName());
+					servertRole.setSkillOneLevel(servertRoleVM.getSkillOneLevel());
+					servertRole.setSkillTwoLevel(servertRoleVM.getSkillTwoLevel());
+					servertRole.setSkillThreeLevel(servertRoleVM.getSkillThreeLevel());
+					servertRole.setToolLevel(servertRoleVM.getToolLevel());
+					servertRole.setType(servertRoleVM.getType());
+					servertRolesRepository.save(servertRole);
+					return servertRole;
+				}).map(ServertRoleVM::new);
 	}
 }

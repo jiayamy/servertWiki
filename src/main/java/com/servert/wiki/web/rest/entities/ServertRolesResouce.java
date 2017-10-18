@@ -3,6 +3,7 @@ package com.servert.wiki.web.rest.entities;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +30,7 @@ import com.servert.wiki.web.rest.util.HeaderUtil;
 import com.servert.wiki.web.rest.util.PaginationUtil;
 import com.servert.wiki.web.rest.vm.ServertRoleVM;
 
+import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
 
 @RestController
@@ -50,10 +53,10 @@ public class ServertRolesResouce {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 	
-	@PostMapping("/addServertRole")
+	@PostMapping("/servertRoles")
 	@Timed
-	public ResponseEntity saveServertRoles(@Valid @RequestBody  ServertRoleVM servertRoleVM) throws URISyntaxException{
-		logger.info(SecurityUtils.getCurrentUserLogin() + " REST request to add Servert Roles");
+	public ResponseEntity<ServertRoleVM> saveServertRoles(@Valid @RequestBody  ServertRoleVM servertRoleVM) throws URISyntaxException{
+		logger.info(SecurityUtils.getCurrentUserLogin() + " REST request to add Servert :{}", servertRoleVM);
 		if (servertRoleVM.getId() != null) {
 			return ResponseEntity.badRequest()
 	                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new servert cannot already have an ID"))
@@ -64,5 +67,17 @@ public class ServertRolesResouce {
 					.headers(HeaderUtil.createAlert( "entities.created", servertRole.getName()))
 					.body(servertRoleVM);
 		}
+	}
+	
+	@PutMapping("/servertRoles")
+	@Timed
+	public ResponseEntity<ServertRoleVM> updateServertRoles(@Valid @RequestBody ServertRoleVM servertRoleVM){
+		logger.info(SecurityUtils.getCurrentUserLogin() + " REST request to update Servert :{}", servertRoleVM);
+		if(servertRoleVM.getId() == null){
+			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "updateError", "Id can not be null")).body(null);
+		}
+		Optional<ServertRoleVM> servert = servertRolesService.updateServertRole(servertRoleVM);
+		return ResponseUtil.wrapOrNotFound(servert,
+	            HeaderUtil.createAlert("entities.updated", SecurityUtils.getCurrentUserLogin()));
 	}
 }

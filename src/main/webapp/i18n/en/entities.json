@@ -12,9 +12,12 @@
         	"level": "Level",
         	"atk": "Atk",
         	"hp": "Hp",
-        	"skillOneLevel": "SkillOneLevel",
-        	"skillTwoLevel": "SkillTwoLevel",
-        	"skillThreeLevel": "SkillThreeLevel"
+        	"skillOneLevel": "Skill1Level",
+        	"skillTwoLevel": "Skill2Level",
+        	"skillThreeLevel": "Skill3Level"
+        },
+        "detail":{
+        	"title": "Servert"
         }
     }
 }

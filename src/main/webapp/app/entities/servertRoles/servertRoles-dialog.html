@@ -1,0 +1,38 @@
+<div>
+    <h2>
+        <span data-translate="entities.detail.title">Servert</span> [<b>{{vm.user.login}}</b>]
+    </h2>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="entities.servert.name">Name</span></dt>
+        <dd><span>{{vm.servert.name}}</span></dd>
+        <dt><span data-translate="entities.servert.type">Type</span></dt>
+        <dd>{{vm.servert.type}}</dd>
+        <dt><span data-translate="entities.servert.toolLevel">Tool Level</span></dt>
+        <dd>{{vm.servert.toolLevel}}</dd>
+        <dt><span data-translate="userManagement.email">Email</span></dt>
+        <dd>{{vm.user.email}}</dd>
+        <dt><span data-translate="userManagement.langKey">Lang Key</span></dt>
+        <dd>{{vm.user.langKey}}</dd>
+        <dt><span data-translate="userManagement.createdBy">Created By</span></dt>
+        <dd>{{vm.user.createdBy}}</dd>
+        <dt><span data-translate="userManagement.createdDate">Created Date</span></dt>
+        <dd>{{vm.user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
+        <dt><span data-translate="userManagement.lastModifiedBy">Last Modified By</span></dt>
+        <dd>{{vm.user.lastModifiedBy}}</dd>
+        <dt><span data-translate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>{{vm.user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
+        <dt><span data-translate="userManagement.profiles">Profiles</span></dt>
+        <dd>
+            <ul class="list-unstyled">
+                <li ng-repeat="authority in vm.user.authorities">
+                    <span class="label label-info">{{authority}}</span>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <button type="submit"
+            ui-sref="servertRoles"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -7,12 +7,46 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.servert.wiki.config.Constants;
+import com.servert.wiki.domain.entities.ServertRole;
 
 public class ServertRoleVM implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-    private Long id;
+	public ServertRoleVM(ServertRole servertRole) {
+		this(servertRole.getId(), servertRole.getLogin(), servertRole.getName(), servertRole.getType(),
+				servertRole.getAtk(), servertRole.getHp(), servertRole.getLevel(), servertRole.getSkillOneLevel(),
+				servertRole.getSkillTwoLevel(), servertRole.getSkillThreeLevel(), servertRole.getToolLevel(),
+				servertRole.getCreatedBy(), servertRole.getCreatedDate(), servertRole.getLastModifiedBy(),
+				servertRole.getLastModifiedDate());
+	}
+	
+    public ServertRoleVM() {
+		super();
+	}
+
+	public ServertRoleVM(Long id, String login, String name, Integer type, Long atk, Long hp, Integer level,
+			Integer skillOneLevel, Integer skillTwoLevel, Integer skillThreeLevel, Integer toolLevel, String createdBy,
+			Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.name = name;
+		this.type = type;
+		this.atk = atk;
+		this.hp = hp;
+		this.level = level;
+		this.skillOneLevel = skillOneLevel;
+		this.skillTwoLevel = skillTwoLevel;
+		this.skillThreeLevel = skillThreeLevel;
+		this.toolLevel = toolLevel;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.lastModifiedBy = lastModifiedBy;
+		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	private Long id;
     
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
