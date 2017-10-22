@@ -47,14 +47,6 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
     private Integer type;
     
     @NotNull
-    @Column(name = "atk_",length = 20)
-    private Long atk;
-    
-    @NotNull
-    @Column(name = "hp_",length = 20)
-    private Long hp;
-    
-    @NotNull
     @Column(name = "level_",length = 11)
     private Integer level;
     
@@ -104,22 +96,6 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
 
 	public void setType(Integer type) {
 		this.type = type;
-	}
-
-	public Long getAtk() {
-		return atk;
-	}
-
-	public void setAtk(Long atk) {
-		this.atk = atk;
-	}
-
-	public Long getHp() {
-		return hp;
-	}
-
-	public void setHp(Long hp) {
-		this.hp = hp;
 	}
 
 	public Integer getLevel() {
