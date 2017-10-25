@@ -47,6 +47,10 @@ CREATE TABLE `w_skill_level_resource` (
   `resource_id_1` bigint(20) DEFAULT NULL,
   `resource_id_2` bigint(20) DEFAULT NULL,
   `qb_` bigint(20) NOT NULL DEFAULT '0',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_by` varchar(45) NOT NULL,
+  `last_modified_by` varchar(45) DEFAULT NULL,
+  `last_modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='英灵技能升级材料表';
 
@@ -58,6 +62,10 @@ CREATE TABLE `w_level_resource` (
   `resource_id_1` bigint(20) DEFAULT NULL,
   `resource_id_2` bigint(20) DEFAULT NULL,
   `qb_` bigint(20) DEFAULT '0',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_by` varchar(45) NOT NULL,
+  `last_modified_by` varchar(45) DEFAULT NULL,
+  `last_modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='英灵升级材料表';
 
@@ -65,6 +73,10 @@ CREATE TABLE `w_resource` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name_` varchar(50) NOT NULL,
   `avert_` varchar(200) DEFAULT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_by` varchar(45) NOT NULL,
+  `last_modified_by` varchar(45) DEFAULT NULL,
+  `last_modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='材料表';
 
@@ -73,8 +85,11 @@ CREATE TABLE `w_servert_image` (
   `servert_id` bigint(20) NOT NULL,
   `avert_` varchar(200) DEFAULT NULL,
   `image_` varchar(200) DEFAULT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_by` varchar(45) NOT NULL,
+  `last_modified_by` varchar(45) DEFAULT NULL,
+  `last_modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='英灵图片表';
-
 
 
