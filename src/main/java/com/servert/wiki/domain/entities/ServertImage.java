@@ -33,12 +33,10 @@ public class ServertImage extends AbstractAuditingEntity implements Serializable
     @Column(name = "servert_id",length = 20)
 	private Long servertId;
 	
-	@NotNull
     @Size(max = 200)
     @Column(name = "avert_",length = 200)
 	private String avert;
 	
-	@NotNull
     @Size(max = 200)
     @Column(name = "image_",length = 200)
 	private String image;

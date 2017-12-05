@@ -34,7 +34,6 @@ public class Resouce extends AbstractAuditingEntity implements Serializable{
     @Column(name = "name_",length = 50)
 	private String name;
 	
-	@NotNull
     @Size(max = 200)
     @Column(name = "avert_",length = 200)
 	private String avert;

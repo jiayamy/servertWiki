@@ -37,10 +37,11 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
     @Column(name = "login_", length = 50, unique = true, nullable = false)
     private String login;
     
+    
     @NotNull
-    @Size(max = 50)
-    @Column(name = "name_",length = 50)
-    private String name;
+    @Column(name = "servert_id", length = 20)
+    private Long servertId;
+    
     
     @NotNull
     @Column(name = "type_",length = 11)
@@ -82,13 +83,14 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
 		this.login = login;
 	}
 
-	public String getName() {
-		return name;
+	public Long getServertId() {
+		return servertId;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setServertId(Long servertId) {
+		this.servertId = servertId;
 	}
+
 
 	public Integer getType() {
 		return type;

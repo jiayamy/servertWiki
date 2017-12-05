@@ -5,7 +5,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
-import javax.inject.Inject;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -41,7 +40,6 @@ public class ServertRolesResouce {
 	
 	private static final String ENTITY_NAME = "entities";
 	
-	@Inject
 	private ServertRolesService servertRolesService;
 	
 	@GetMapping("/servertRoles")
@@ -63,8 +61,8 @@ public class ServertRolesResouce {
 	                .body(null);
 		}else{
 			ServertRole servertRole = servertRolesService.saveServertRoles(servertRoleVM);
-			return ResponseEntity.created(new URI("/api/users/" + servertRole.getName()))
-					.headers(HeaderUtil.createAlert( "entities.created", servertRole.getName()))
+			return ResponseEntity.created(new URI("/api/users/" + servertRoleVM.getName()))
+					.headers(HeaderUtil.createAlert( "entities.created", servertRoleVM.getName()))
 					.body(servertRoleVM);
 		}
 	}

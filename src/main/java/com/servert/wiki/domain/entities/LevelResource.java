@@ -17,9 +17,9 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import com.servert.wiki.domain.AbstractAuditingEntity;
 
 @Entity
-@Table(name = "w_skill_level_resource")
+@Table(name = "w_level_resource")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "skillLevelResouce")
+@Document(indexName = "levelResouce")
 public class LevelResource extends AbstractAuditingEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;

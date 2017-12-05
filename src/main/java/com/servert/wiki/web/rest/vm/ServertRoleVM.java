@@ -14,8 +14,8 @@ public class ServertRoleVM implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public ServertRoleVM(ServertRole servertRole) {
-		this(servertRole.getId(), servertRole.getLogin(), servertRole.getName(), servertRole.getType(),
-				servertRole.getAtk(), servertRole.getHp(), servertRole.getLevel(), servertRole.getSkillOneLevel(),
+		this(servertRole.getId(), servertRole.getLogin(), null, servertRole.getType(),
+				servertRole.getLevel(), servertRole.getSkillOneLevel(),
 				servertRole.getSkillTwoLevel(), servertRole.getSkillThreeLevel(), servertRole.getToolLevel(),
 				servertRole.getCreatedBy(), servertRole.getCreatedDate(), servertRole.getLastModifiedBy(),
 				servertRole.getLastModifiedDate());
@@ -25,7 +25,7 @@ public class ServertRoleVM implements Serializable{
 		super();
 	}
 
-	public ServertRoleVM(Long id, String login, String name, Integer type, Long atk, Long hp, Integer level,
+	public ServertRoleVM(Long id, String login, String name, Integer type, Integer level,
 			Integer skillOneLevel, Integer skillTwoLevel, Integer skillThreeLevel, Integer toolLevel, String createdBy,
 			Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
 		super();
@@ -33,8 +33,6 @@ public class ServertRoleVM implements Serializable{
 		this.login = login;
 		this.name = name;
 		this.type = type;
-		this.atk = atk;
-		this.hp = hp;
 		this.level = level;
 		this.skillOneLevel = skillOneLevel;
 		this.skillTwoLevel = skillTwoLevel;
@@ -45,21 +43,30 @@ public class ServertRoleVM implements Serializable{
 		this.lastModifiedBy = lastModifiedBy;
 		this.lastModifiedDate = lastModifiedDate;
 	}
-
+	/*
+	 * id
+	 */
 	private Long id;
     
+	/*
+	 * 登陆账号
+	 */
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     private String login;
     
+    /*
+     * servert name
+     */
     @Size(max = 50)
     private String name;
     
+    /**
+     * servert type
+     */
     private Integer type;
     
-    private Long atk;
-    
-    private Long hp;
+    private Long servertId;
     
     private Integer level;
     
@@ -111,20 +118,12 @@ public class ServertRoleVM implements Serializable{
 		this.type = type;
 	}
 
-	public Long getAtk() {
-		return atk;
+	public Long getServertId() {
+		return servertId;
 	}
 
-	public void setAtk(Long atk) {
-		this.atk = atk;
-	}
-
-	public Long getHp() {
-		return hp;
-	}
-
-	public void setHp(Long hp) {
-		this.hp = hp;
+	public void setServertId(Long servertId) {
+		this.servertId = servertId;
 	}
 
 	public Integer getLevel() {

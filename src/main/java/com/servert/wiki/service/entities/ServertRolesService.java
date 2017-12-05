@@ -2,8 +2,6 @@ package com.servert.wiki.service.entities;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -20,7 +18,6 @@ public class ServertRolesService {
 	
 	private Logger logger = LoggerFactory.getLogger(ServertRolesService.class);
 	
-	@Inject
 	private ServertRolesRepository servertRolesRepository;
 	
 	public Page<ServertRole> getServertRolesByLogin(Pageable pageable){
@@ -29,11 +26,9 @@ public class ServertRolesService {
 	
 	public ServertRole saveServertRoles(ServertRoleVM servertRoleVM){
 		ServertRole servertRole = new ServertRole();
-		servertRole.setAtk(servertRoleVM.getAtk());
-		servertRole.setHp(servertRoleVM.getHp());
+		servertRole.setServertId(servertRoleVM.getServertId());
 		servertRole.setLevel(servertRoleVM.getLevel());
 		servertRole.setLogin(SecurityUtils.getCurrentUserLogin());
-		servertRole.setName(servertRoleVM.getName());
 		servertRole.setSkillOneLevel(servertRoleVM.getSkillOneLevel());
 		servertRole.setSkillThreeLevel(servertRoleVM.getSkillThreeLevel());
 		servertRole.setSkillTwoLevel(servertRoleVM.getSkillTwoLevel());
@@ -47,10 +42,8 @@ public class ServertRolesService {
 		return Optional.of(servertRolesRepository
 				.findOne(servertRoleVM.getId()))
 				.map(servertRole -> {
-					servertRole.setAtk(servertRoleVM.getAtk());
-					servertRole.setHp(servertRoleVM.getHp());
+					servertRole.setServertId(servertRoleVM.getServertId());
 					servertRole.setLevel(servertRoleVM.getLevel());
-					servertRole.setName(servertRoleVM.getName());
 					servertRole.setSkillOneLevel(servertRoleVM.getSkillOneLevel());
 					servertRole.setSkillTwoLevel(servertRoleVM.getSkillTwoLevel());
 					servertRole.setSkillThreeLevel(servertRoleVM.getSkillThreeLevel());

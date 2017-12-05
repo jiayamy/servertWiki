@@ -1,22 +1,27 @@
 package com.servert.wiki.config;
 
-import io.github.jhipster.config.JHipsterProperties;
+import java.util.concurrent.TimeUnit;
+
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 import org.ehcache.expiry.Duration;
 import org.ehcache.expiry.Expirations;
 import org.ehcache.jsr107.Eh107Configuration;
-
-import java.util.concurrent.TimeUnit;
-
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.serviceregistry.Registration;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.servert.wiki.domain.entities.LevelResource;
+import com.servert.wiki.domain.entities.Resouce;
+import com.servert.wiki.domain.entities.ServertImage;
+import com.servert.wiki.domain.entities.ServertLevelInfo;
+import com.servert.wiki.domain.entities.ServertName;
+import com.servert.wiki.domain.entities.SkillLevelResouce;
+
+import io.github.jhipster.config.JHipsterProperties;
 
 @Configuration
 @EnableCaching
@@ -45,6 +50,12 @@ public class CacheConfiguration {
             cm.createCache(com.servert.wiki.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
             cm.createCache(com.servert.wiki.domain.entities.ServertRole.class.getName(), jcacheConfiguration);
+            cm.createCache(LevelResource.class.getName(), jcacheConfiguration);
+            cm.createCache(Resouce.class.getName(), jcacheConfiguration);
+            cm.createCache(ServertImage.class.getName(), jcacheConfiguration);
+            cm.createCache(ServertLevelInfo.class.getName(), jcacheConfiguration);
+            cm.createCache(ServertName.class.getName(), jcacheConfiguration);
+            cm.createCache(SkillLevelResouce.class.getName(), jcacheConfiguration);
         };
     }
 }
