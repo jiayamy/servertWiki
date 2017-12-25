@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -22,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.inject.Inject;
 import com.servert.wiki.domain.entities.ServertRole;
+import com.servert.wiki.repository.entities.ServertLevelInfoRepository;
 import com.servert.wiki.security.SecurityUtils;
 import com.servert.wiki.service.entities.ServertRolesService;
 import com.servert.wiki.web.rest.util.HeaderUtil;
@@ -40,13 +43,14 @@ public class ServertRolesResouce {
 	
 	private static final String ENTITY_NAME = "entities";
 	
+	@Autowired
 	private ServertRolesService servertRolesService;
 	
 	@GetMapping("/servertRoles")
     @Timed
-    public ResponseEntity<List<ServertRole>> getAllServertRoles(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<ServertRoleVM>> getAllServertRoles(@ApiParam Pageable pageable) {
         logger.info(SecurityUtils.getCurrentUserLogin() + " REST request to get a page of Servert Roles");
-		final Page<ServertRole> page = servertRolesService.getServertRolesByLogin(pageable);
+		final Page<ServertRoleVM> page = servertRolesService.getServertRolesByLogin(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/servertRoles");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

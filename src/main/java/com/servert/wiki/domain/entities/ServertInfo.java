@@ -18,10 +18,10 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import com.servert.wiki.domain.AbstractAuditingEntity;
 
 @Entity
-@Table(name = "w_servert_name")
+@Table(name = "w_servert_info")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "servertName")
-public class ServertName extends AbstractAuditingEntity implements Serializable{
+@Document(indexName = "servertInfo")
+public class ServertInfo extends AbstractAuditingEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -32,6 +32,9 @@ public class ServertName extends AbstractAuditingEntity implements Serializable{
 	@NotNull
     @Column(name = "servert_id",length = 20)
 	private Long servertId;
+	
+	@Column(name = "servert_remark", length = 1000)
+	private String servertRemark;
 	
 	@NotNull
     @Size(max = 20)
@@ -60,6 +63,14 @@ public class ServertName extends AbstractAuditingEntity implements Serializable{
 
 	public void setServertName(String servertName) {
 		this.servertName = servertName;
+	}
+
+	public String getServertRemark() {
+		return servertRemark;
+	}
+
+	public void setServertRemark(String servertRemark) {
+		this.servertRemark = servertRemark;
 	}
 	
 }

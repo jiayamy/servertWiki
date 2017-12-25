@@ -6,19 +6,19 @@
             "home": "首页",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Master Info",
-                "servert": "Servert Roles",
-                "plans": "Servert Plans",
+                "main": "英灵列表",
+                "servert": "英灵列表",
+                "plans": "英灵计划",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "simulation":{
-            	"main": "Simulation Servert",
-            	"atk": "Simulation Atk",
-            	"servert": "Simulation Servert"
+            	"main": "英灵模拟库",
+            	"atk": "伤害模拟计算",
+            	"servert": "英灵模拟"
             },
             "activities":{
-				"main": "Activities",
-				"history": "Activities History"            	
+				"main": "活动",
+				"history": "活动历史"            	
             },
             "account": {
                 "main": "账号",

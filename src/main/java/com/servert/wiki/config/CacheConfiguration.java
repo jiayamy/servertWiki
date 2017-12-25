@@ -18,7 +18,7 @@ import com.servert.wiki.domain.entities.LevelResource;
 import com.servert.wiki.domain.entities.Resouce;
 import com.servert.wiki.domain.entities.ServertImage;
 import com.servert.wiki.domain.entities.ServertLevelInfo;
-import com.servert.wiki.domain.entities.ServertName;
+import com.servert.wiki.domain.entities.ServertInfo;
 import com.servert.wiki.domain.entities.SkillLevelResouce;
 
 import io.github.jhipster.config.JHipsterProperties;
@@ -54,7 +54,7 @@ public class CacheConfiguration {
             cm.createCache(Resouce.class.getName(), jcacheConfiguration);
             cm.createCache(ServertImage.class.getName(), jcacheConfiguration);
             cm.createCache(ServertLevelInfo.class.getName(), jcacheConfiguration);
-            cm.createCache(ServertName.class.getName(), jcacheConfiguration);
+            cm.createCache(ServertInfo.class.getName(), jcacheConfiguration);
             cm.createCache(SkillLevelResouce.class.getName(), jcacheConfiguration);
         };
     }

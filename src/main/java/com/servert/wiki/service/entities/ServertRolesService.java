@@ -1,27 +1,57 @@
 package com.servert.wiki.service.entities;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.servert.wiki.domain.entities.ServertLevelInfo;
+import com.servert.wiki.domain.entities.ServertInfo;
 import com.servert.wiki.domain.entities.ServertRole;
+import com.servert.wiki.repository.entities.ServertLevelInfoRepository;
+import com.servert.wiki.repository.entities.ServertNameRepository;
 import com.servert.wiki.repository.entities.ServertRolesRepository;
 import com.servert.wiki.security.SecurityUtils;
 import com.servert.wiki.web.rest.vm.ServertRoleVM;
 
 @Service
+@Transactional
 public class ServertRolesService {
 	
 	private Logger logger = LoggerFactory.getLogger(ServertRolesService.class);
 	
+	@Autowired
 	private ServertRolesRepository servertRolesRepository;
 	
-	public Page<ServertRole> getServertRolesByLogin(Pageable pageable){
-		return servertRolesRepository.findAllByLogin(pageable, SecurityUtils.getCurrentUserLogin());
+	@Autowired
+	private ServertNameRepository servertNameRepository;
+	
+	@Autowired
+	private ServertLevelInfoRepository servertLevelInfoRepository;
+	
+	public Page<ServertRoleVM> getServertRolesByLogin(Pageable pageable){
+		Page<ServertRoleVM> datas = servertRolesRepository.findAllByLogin(pageable, SecurityUtils.getCurrentUserLogin()).map(ServertRoleVM::new);
+		List<ServertRoleVM> list = datas.getContent();
+		for(ServertRoleVM servertRoleVM : list){
+			Long servertId = servertRoleVM.getServertId();
+			Integer level = servertRoleVM.getLevel();
+			ServertInfo servertName = servertNameRepository.findOneByServertId(servertId);
+			if(servertName != null){
+				servertRoleVM.setName(servertName.getServertName());
+			}
+			ServertLevelInfo servertLevelInfo = servertLevelInfoRepository.findOneByServertIdAndLevel(servertId, level);
+			if(servertLevelInfo != null){
+				servertRoleVM.setAtk(servertLevelInfo.getAtk());
+				servertRoleVM.setHp(servertLevelInfo.getHp());
+			}
+		}
+		return datas;
 	}
 	
 	public ServertRole saveServertRoles(ServertRoleVM servertRoleVM){

@@ -14,7 +14,7 @@ public class ServertRoleVM implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public ServertRoleVM(ServertRole servertRole) {
-		this(servertRole.getId(), servertRole.getLogin(), null, servertRole.getType(),
+		this(servertRole.getId(), servertRole.getLogin(), null, servertRole.getType(),servertRole.getServertId(),
 				servertRole.getLevel(), servertRole.getSkillOneLevel(),
 				servertRole.getSkillTwoLevel(), servertRole.getSkillThreeLevel(), servertRole.getToolLevel(),
 				servertRole.getCreatedBy(), servertRole.getCreatedDate(), servertRole.getLastModifiedBy(),
@@ -25,7 +25,7 @@ public class ServertRoleVM implements Serializable{
 		super();
 	}
 
-	public ServertRoleVM(Long id, String login, String name, Integer type, Integer level,
+	public ServertRoleVM(Long id, String login, String name, Integer type, Long servertId, Integer level,
 			Integer skillOneLevel, Integer skillTwoLevel, Integer skillThreeLevel, Integer toolLevel, String createdBy,
 			Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
 		super();
@@ -33,6 +33,7 @@ public class ServertRoleVM implements Serializable{
 		this.login = login;
 		this.name = name;
 		this.type = type;
+		this.servertId = servertId;
 		this.level = level;
 		this.skillOneLevel = skillOneLevel;
 		this.skillTwoLevel = skillTwoLevel;
@@ -43,6 +44,31 @@ public class ServertRoleVM implements Serializable{
 		this.lastModifiedBy = lastModifiedBy;
 		this.lastModifiedDate = lastModifiedDate;
 	}
+	
+	
+	public ServertRoleVM(Long id, String login, String name, Integer type, Long servertId, Integer level, Long atk,
+			Long hp, Integer skillOneLevel, Integer skillTwoLevel, Integer skillThreeLevel, Integer toolLevel,
+			String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.name = name;
+		this.type = type;
+		this.servertId = servertId;
+		this.level = level;
+		this.atk = atk;
+		this.hp = hp;
+		this.skillOneLevel = skillOneLevel;
+		this.skillTwoLevel = skillTwoLevel;
+		this.skillThreeLevel = skillThreeLevel;
+		this.toolLevel = toolLevel;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.lastModifiedBy = lastModifiedBy;
+		this.lastModifiedDate = lastModifiedDate;
+	}
+
+
 	/*
 	 * id
 	 */
@@ -69,6 +95,10 @@ public class ServertRoleVM implements Serializable{
     private Long servertId;
     
     private Integer level;
+    
+    private Long atk;
+    
+    private Long hp;
     
     private Integer skillOneLevel;
     
@@ -196,6 +226,22 @@ public class ServertRoleVM implements Serializable{
 
 	public void setLastModifiedDate(Instant lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	public Long getAtk() {
+		return atk;
+	}
+
+	public void setAtk(Long atk) {
+		this.atk = atk;
+	}
+
+	public Long getHp() {
+		return hp;
+	}
+
+	public void setHp(Long hp) {
+		this.hp = hp;
 	}
     
 }
