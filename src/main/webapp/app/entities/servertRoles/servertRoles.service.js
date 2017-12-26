@@ -19,7 +19,12 @@
             },
             'save': { method:'POST' },
             'update': { method:'PUT' },
-            'delete':{ method:'DELETE'}
+            'delete':{ method:'DELETE'},
+            'getServantType':{
+            	url:'api/servertType',
+            	method:'GET',
+            	isArray:true
+            }
         });
 
         return service;

@@ -2,7 +2,8 @@
     "entities": {
     	"home": {
     		"title": "英灵列表",
-    		"createLabel": "新增"
+    		"createLabel": "新增",
+    		"createOrEditLabel":"新增/编辑英灵"
     	},
         "created": "A new Servert is created with identifier {{ param }}",
         "servert": {
@@ -15,6 +16,9 @@
         	"skillOneLevel": "技能1",
         	"skillTwoLevel": "技能2",
         	"skillThreeLevel": "技能3"
+        },
+        "detail":{
+        	"title": "英灵详情"
         }
     }
 }

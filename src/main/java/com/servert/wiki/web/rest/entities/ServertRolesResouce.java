@@ -23,9 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.inject.Inject;
 import com.servert.wiki.domain.entities.ServertRole;
-import com.servert.wiki.repository.entities.ServertLevelInfoRepository;
 import com.servert.wiki.security.SecurityUtils;
 import com.servert.wiki.service.entities.ServertRolesService;
 import com.servert.wiki.web.rest.util.HeaderUtil;

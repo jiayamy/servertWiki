@@ -47,7 +47,7 @@
 
             }        
         })
-        .state('entities.new', {
+        .state('servertRoles.new', {
             url: '/new',
             data: {
                 authorities: ['ROLE_ADMIN']

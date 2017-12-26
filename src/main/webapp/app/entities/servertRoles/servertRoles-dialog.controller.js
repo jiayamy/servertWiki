@@ -15,7 +15,8 @@
         vm.languages = null;
         vm.save = save;
         vm.user = entity;
-
+        vm.intList = [1,2,3,4,5,6,7,8,9];
+        
 
         JhiLanguageService.getAll().then(function (languages) {
             vm.languages = languages;
@@ -37,10 +38,20 @@
         function save () {
             vm.isSaving = true;
             if (vm.user.id !== null) {
-            	ServertRolesService.update(vm.user, onSaveSuccess, onSaveError);
+            	ServertRolesService.update(vm.servant, onSaveSuccess, onSaveError);
             } else {
-            	ServertRolesService.save(vm.user, onSaveSuccess, onSaveError);
+            	ServertRolesService.save(vm.servant, onSaveSuccess, onSaveError);
             }
+        }
+        
+        vm.loadType = loadType;
+        vm.servantType = {};
+        vm.loadType();
+        function loadType(){
+        	ServertRolesService.getServantType(null,
+        			function(result){
+        				vm.servantType = result;
+        			});
         }
     }
 })();

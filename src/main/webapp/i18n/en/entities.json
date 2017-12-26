@@ -1,10 +1,11 @@
 {
     "entities": {
     	"home": {
-    		"title": "Servert Roles",
-    		"createLabel": "New Servert"
+    		"title": "Servant Roles",
+    		"createLabel": "New Servant",
+    		"createOrEditLabel":"Create or edit a Servant"
     	},
-        "created": "A new Servert is created with identifier {{ param }}",
+        "created": "A new Servant is created with identifier {{ param }}",
         "servert": {
         	"name": "Name",
         	"type": "Class",
