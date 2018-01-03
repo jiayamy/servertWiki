@@ -8,6 +8,7 @@
         "created": "A new Servant is created with identifier {{ param }}",
         "servert": {
         	"name": "Name",
+        	"remark" : "RemarkName",
         	"type": "Class",
         	"toolLevel": "Noble Phantasm",
         	"level": "Level",

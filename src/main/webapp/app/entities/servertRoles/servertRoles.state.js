@@ -75,6 +75,30 @@
                     $state.go('servertRoles');
                 });
             }]
+        })
+        .state('servertRoles.edit', {
+            url: '/edit',
+            data: {
+                authorities: ['ROLE_ADMIN']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/servertRoles/servertRoles-dialog.html',
+                    controller: 'ServertRolesDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Servant', function(ServertRolesService) {
+                            return ServertRolesService.get({id : $stateParams.id});
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('servertRoles', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 })();

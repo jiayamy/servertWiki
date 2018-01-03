@@ -41,6 +41,8 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
     @Column(name = "login_", length = 50, unique = true, nullable = false)
     private String login;
     
+    @Column(name = "user_remark", length = 50)
+    private String userRemark;
     
     @NotNull
     @Column(name = "servert_id", length = 20)
@@ -85,6 +87,14 @@ public class ServertRole extends AbstractAuditingEntity implements Serializable{
 
 	public void setLogin(String login) {
 		this.login = login;
+	}
+
+	public String getUserRemark() {
+		return userRemark;
+	}
+
+	public void setUserRemark(String userRemark) {
+		this.userRemark = userRemark;
 	}
 
 	public Long getServertId() {

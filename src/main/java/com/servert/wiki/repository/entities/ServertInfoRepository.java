@@ -11,5 +11,6 @@ import com.servert.wiki.domain.entities.ServertInfo;
 public interface ServertInfoRepository extends JpaRepository<ServertInfo, Long>{
 	
 	List<ServertInfo> findByServertType(Integer servertType);
-
+	
+	ServertInfo findOneByServertId(Long servertId);
 }

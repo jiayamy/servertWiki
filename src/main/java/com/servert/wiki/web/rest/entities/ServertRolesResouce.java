@@ -16,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -80,4 +81,17 @@ public class ServertRolesResouce {
 		return ResponseUtil.wrapOrNotFound(servert,
 	            HeaderUtil.createAlert("entities.updated", SecurityUtils.getCurrentUserLogin()));
 	}
+	
+	@GetMapping("/servertRoles/{id}")
+    @Timed
+    public ResponseEntity<ServertRoleVM> getServertRole(@PathVariable String id) {
+		logger.debug(SecurityUtils.getCurrentUserLogin() + "REST request to get Servert Role id: {}", id);
+		try {
+			Long servertRoleId = Long.parseLong(id);
+			Optional<ServertRoleVM> servert = servertRolesService.getServertRoleById(servertRoleId);
+			return ResponseUtil.wrapOrNotFound(servert);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "getError", "Id should be number")).body(null);
+		}
+    }
 }

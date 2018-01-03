@@ -13,6 +13,7 @@
             <thead>
             <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                 <th jh-sort-by="name"><span data-translate="entities.servert.name">Name</span><span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="name"><span data-translate="entities.servert.remark">Remark</span><span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="type"><span data-translate="entities.servert.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="toolLevel"><span data-translate="entities.servert.toolLevel">ToolLevel</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="level"> <span data-translate="entities.servert.level">Level</span> <span class="glyphicon glyphicon-sort"></span></th>               
@@ -26,6 +27,7 @@
             <tbody>
             <tr ng-repeat="servert in vm.serverts track by servert.id">
                 <td>{{servert.name}}</td>
+                <td>{{servert.userRemark}}</td>
                 <td>{{servert.typeName}}</td>
                 <td>{{servert.toolLevel}}</td>
                 <td>{{servert.level}}</td>
@@ -43,7 +45,7 @@
                             <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
                         </button>
                         <button type="submit"
-                                ui-sref="user-management.edit({login:user.login})"
+                                ui-sref="servertRoles.edit({id:servert.id})"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>

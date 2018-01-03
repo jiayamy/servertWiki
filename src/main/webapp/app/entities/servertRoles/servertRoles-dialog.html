@@ -25,7 +25,10 @@
 	                    ng-options="servertInfo.servertName for servertInfo in vm.servantList track by servertInfo.id">
 	        </select>
         </div>
-        
+        <div class="form-group">
+            <label class="control-label" data-translate="entities.servert.remark">Remark</label>
+            <input class="form-control" name="email" ng-model="vm.servant.userRemark">
+        </div>
         <div class="form-group">
             <label data-translate="entities.servert.toolLevel">toolLevel</label>
             <select class="form-control" name="langKey" ng-model="vm.servant.toolLevel"

@@ -8,6 +8,7 @@
         "created": "A new Servert is created with identifier {{ param }}",
         "servert": {
         	"name": "英灵",
+        	"remark": "昵称",
         	"type": "职介",
         	"toolLevel": "宝具等级",
         	"level": "等级",

@@ -14,7 +14,7 @@ public class ServertRoleVM implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	public ServertRoleVM(ServertRole servertRole) {
-		this(servertRole.getId(), servertRole.getLogin(), null, servertRole.getType(),servertRole.getServertId(),
+		this(servertRole.getId(), servertRole.getLogin(),servertRole.getUserRemark(), servertRole.getType(),servertRole.getServertId(),
 				servertRole.getLevel(), servertRole.getSkillOneLevel(),
 				servertRole.getSkillTwoLevel(), servertRole.getSkillThreeLevel(), servertRole.getToolLevel(),
 				servertRole.getCreatedBy(), servertRole.getCreatedDate(), servertRole.getLastModifiedBy(),
@@ -25,13 +25,13 @@ public class ServertRoleVM implements Serializable{
 		super();
 	}
 
-	public ServertRoleVM(Long id, String login, String name, Integer type, Long servertId, Integer level,
+	public ServertRoleVM(Long id, String login, String userRemark, Integer type, Long servertId, Integer level,
 			Integer skillOneLevel, Integer skillTwoLevel, Integer skillThreeLevel, Integer toolLevel, String createdBy,
 			Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
 		super();
 		this.id = id;
 		this.login = login;
-		this.name = name;
+		this.userRemark = userRemark;
 		this.type = type;
 		this.servertId = servertId;
 		this.level = level;
@@ -46,14 +46,17 @@ public class ServertRoleVM implements Serializable{
 	}
 	
 	
-	public ServertRoleVM(Long id, String login, String name, Integer type, Long servertId, Integer level, Long atk,
-			Long hp, Integer skillOneLevel, Integer skillTwoLevel, Integer skillThreeLevel, Integer toolLevel,
-			String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
+	public ServertRoleVM(Long id, String login, String userRemark, String name, Integer type, String typeName,
+			Long servertId, Integer level, Long atk, Long hp, Integer skillOneLevel, Integer skillTwoLevel,
+			Integer skillThreeLevel, Integer toolLevel, String createdBy, Instant createdDate, String lastModifiedBy,
+			Instant lastModifiedDate) {
 		super();
 		this.id = id;
 		this.login = login;
+		this.userRemark = userRemark;
 		this.name = name;
 		this.type = type;
+		this.typeName = typeName;
 		this.servertId = servertId;
 		this.level = level;
 		this.atk = atk;
@@ -69,6 +72,8 @@ public class ServertRoleVM implements Serializable{
 	}
 
 
+
+
 	/*
 	 * id
 	 */
@@ -80,6 +85,8 @@ public class ServertRoleVM implements Serializable{
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     private String login;
+    
+    private String userRemark;
     
     /*
      * servert name
@@ -132,6 +139,14 @@ public class ServertRoleVM implements Serializable{
 
 	public void setLogin(String login) {
 		this.login = login;
+	}
+	
+	public String getUserRemark() {
+		return userRemark;
+	}
+
+	public void setUserRemark(String userRemark) {
+		this.userRemark = userRemark;
 	}
 
 	public String getName() {
