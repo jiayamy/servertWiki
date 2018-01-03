@@ -40,6 +40,10 @@ public class ServertInfo extends AbstractAuditingEntity implements Serializable{
     @Size(max = 20)
     @Column(name = "servert_name",length = 20)
 	private String servertName;
+	
+	@NotNull
+	@Column(name = "servert_type", length = 11)
+	private Integer servertType;
 
 	public Long getId() {
 		return id;
@@ -71,6 +75,14 @@ public class ServertInfo extends AbstractAuditingEntity implements Serializable{
 
 	public void setServertRemark(String servertRemark) {
 		this.servertRemark = servertRemark;
+	}
+
+	public Integer getServertType() {
+		return servertType;
+	}
+
+	public void setServertType(Integer servertType) {
+		this.servertType = servertType;
 	}
 	
 }

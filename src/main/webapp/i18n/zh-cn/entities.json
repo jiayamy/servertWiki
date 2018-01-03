@@ -9,7 +9,7 @@
         "servert": {
         	"name": "英灵",
         	"type": "职介",
-        	"toolLevel": "宝具",
+        	"toolLevel": "宝具等级",
         	"level": "等级",
         	"atk": "攻击",
         	"hp": "生命",

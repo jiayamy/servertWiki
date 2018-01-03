@@ -18,6 +18,7 @@ import com.servert.wiki.domain.entities.LevelResource;
 import com.servert.wiki.domain.entities.Resouce;
 import com.servert.wiki.domain.entities.ServertImage;
 import com.servert.wiki.domain.entities.ServertLevelInfo;
+import com.servert.wiki.domain.entities.ServertTypeInfo;
 import com.servert.wiki.domain.entities.ServertInfo;
 import com.servert.wiki.domain.entities.SkillLevelResouce;
 
@@ -56,6 +57,7 @@ public class CacheConfiguration {
             cm.createCache(ServertLevelInfo.class.getName(), jcacheConfiguration);
             cm.createCache(ServertInfo.class.getName(), jcacheConfiguration);
             cm.createCache(SkillLevelResouce.class.getName(), jcacheConfiguration);
+            cm.createCache(ServertTypeInfo.class.getName(), jcacheConfiguration);
         };
     }
 }

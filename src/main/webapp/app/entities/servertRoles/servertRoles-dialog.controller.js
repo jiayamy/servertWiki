@@ -5,9 +5,9 @@
         .module('servertWikiApp')
         .controller('ServertRolesDialogController',ServertRolesDialogController);
 
-    ServertRolesDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'ServertRolesService', 'JhiLanguageService'];
+    ServertRolesDialogController.$inject = ['$scope','$stateParams', '$uibModalInstance', 'entity', 'ServertRolesService', 'JhiLanguageService'];
 
-    function ServertRolesDialogController ($stateParams, $uibModalInstance, entity, ServertRolesService, JhiLanguageService) {
+    function ServertRolesDialogController ($scope,$stateParams, $uibModalInstance, entity, ServertRolesService, JhiLanguageService) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -15,7 +15,8 @@
         vm.languages = null;
         vm.save = save;
         vm.user = entity;
-        vm.intList = [1,2,3,4,5,6,7,8,9];
+        vm.levelList = [1,2,3,4,5,6,7,8,9];
+        vm.toolLevelList = [1,2,3,4,5];
         
 
         JhiLanguageService.getAll().then(function (languages) {
@@ -43,15 +44,30 @@
             	ServertRolesService.save(vm.servant, onSaveSuccess, onSaveError);
             }
         }
-        
+        //查询英灵类型
         vm.loadType = loadType;
         vm.servantType = {};
+        vm.servantList = {};
         vm.loadType();
         function loadType(){
         	ServertRolesService.getServantType(null,
         			function(result){
         				vm.servantType = result;
         			});
+        }
+        
+        $scope.getServantList = function(){
+        	vm.servantList = vm.servant.type.servertInfos;
+        	
+        }
+        
+        $scope.getServantAHInfo = function(){
+        	var level = vm.servant.level;
+        	if(level < 1 || level > 100){
+        		alert('level should be 1~100');
+        		vm.servant.level = "";
+        	}
+        	
         }
     }
 })();
