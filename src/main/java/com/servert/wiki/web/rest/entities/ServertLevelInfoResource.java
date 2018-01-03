@@ -27,7 +27,7 @@ public class ServertLevelInfoResource {
 	
 	private final Logger logger = LoggerFactory.getLogger(ServertLevelInfoResource.class);
 	
-	private static final String ENTITY_NAME = "entities";
+	private static final String ENTITY_NAME = "servertLevelInfo";
 	
 	@Autowired
 	private ServertLevelInfoService servertLevelInfoService;
@@ -38,11 +38,10 @@ public class ServertLevelInfoResource {
 		logger.info(SecurityUtils.getCurrentUserLogin() + " REST request to get Servert Level Info");
 		if(servertLevelInfoVM.getServertId() == null || servertLevelInfoVM.getLevel() == null){
 			return ResponseEntity.badRequest()
-	                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "params error"))
+	                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "level must between 1~100", "params error"))
 	                .body(null);
 		}
 		Optional<ServertLevelInfoVM> servertLevelInfo = servertLevelInfoService.getServertLevelInfo(servertLevelInfoVM);
-		return ResponseUtil.wrapOrNotFound(servertLevelInfo,
-	            HeaderUtil.createAlert("entities.updated", SecurityUtils.getCurrentUserLogin()));
+		return ResponseUtil.wrapOrNotFound(servertLevelInfo,null);
 	}
 }

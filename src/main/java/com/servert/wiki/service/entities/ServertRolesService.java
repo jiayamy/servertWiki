@@ -14,9 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.servert.wiki.domain.entities.ServertLevelInfo;
 import com.servert.wiki.domain.entities.ServertInfo;
 import com.servert.wiki.domain.entities.ServertRole;
+import com.servert.wiki.domain.entities.ServertTypeInfo;
 import com.servert.wiki.repository.entities.ServertLevelInfoRepository;
 import com.servert.wiki.repository.entities.ServertNameRepository;
 import com.servert.wiki.repository.entities.ServertRolesRepository;
+import com.servert.wiki.repository.entities.ServertTypeRepository;
 import com.servert.wiki.security.SecurityUtils;
 import com.servert.wiki.web.rest.vm.ServertRoleVM;
 
@@ -31,6 +33,9 @@ public class ServertRolesService {
 	
 	@Autowired
 	private ServertNameRepository servertNameRepository;
+	
+	@Autowired
+	private ServertTypeRepository servertTypeRepository;
 	
 	@Autowired
 	private ServertLevelInfoRepository servertLevelInfoRepository;
@@ -49,6 +54,10 @@ public class ServertRolesService {
 			if(servertLevelInfo != null){
 				servertRoleVM.setAtk(servertLevelInfo.getAtk());
 				servertRoleVM.setHp(servertLevelInfo.getHp());
+			}
+			ServertTypeInfo servertTypeInfo = servertTypeRepository.findOne(servertRoleVM.getType());
+			if(servertTypeInfo != null){
+				servertRoleVM.setTypeName(servertTypeInfo.getTypeName());
 			}
 		}
 		return datas;

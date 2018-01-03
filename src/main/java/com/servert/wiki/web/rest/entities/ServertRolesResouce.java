@@ -39,7 +39,7 @@ public class ServertRolesResouce {
 	
 	private final Logger logger = LoggerFactory.getLogger(ServertRolesResouce.class);
 	
-	private static final String ENTITY_NAME = "entities";
+	private static final String ENTITY_NAME = "servertRole";
 	
 	@Autowired
 	private ServertRolesService servertRolesService;

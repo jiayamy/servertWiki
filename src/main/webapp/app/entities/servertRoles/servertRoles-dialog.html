@@ -8,20 +8,20 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.servant.id">
+        <div class="form-group" ng-show="vm.servant.id" style="display:none">
             <label data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" name="id"
                    ng-model="vm.servant.id" readonly>
         </div>
 		<div class="form-group">
 	            <label class="control-label" data-translate="entities.servert.type">ServantType</label>
-				<select class="form-control" name="langKey" ng-model="vm.servant.type" ng-change="getServantList()"
+				<select class="form-control" name="langKey" ng-model="vm.servant.typeList" ng-change="getServantList()"
 	                    ng-options="servertTypeInfo.typeName for servertTypeInfo in vm.servantType track by servertTypeInfo.type">
 	            </select>
 	        </div>
         <div class="form-group">
             <label class="control-label" data-translate="entities.servert.name">ServantName</label>
-            <select class="form-control" name="langKey" ng-model="vm.servant.name"
+            <select class="form-control" name="langKey" ng-model="vm.servant.info"
 	                    ng-options="servertInfo.servertName for servertInfo in vm.servantList track by servertInfo.id">
 	        </select>
         </div>
@@ -40,14 +40,14 @@
         	<div class="col-md-6">
         		<div class="row" style="margin-right: 0px;">
         			<label class="control-label" data-translate="entities.servert.atk">atk</label>
-		            <input type="email" class="form-control" name="email"
+		            <input type="email" class="form-control" name="vm.servant.atk"
 		                   ng-model="vm.servant.atk" required ng-maxlength="100" readonly="readonly">
         		</div>
         	</div>
         	<div class="col-md-6">	
         		<div class="row" style="margin-left: 0px;">
 					<label class="control-label" data-translate="entities.servert.hp">hp</label>
-		            <input type="email" class="form-control" name="email"
+		            <input type="email" class="form-control" name="vm.servant.hp"
 		                   ng-model="vm.servant.hp" required ng-maxlength="100" readonly="readonly">
         		</div>
         	</div>
@@ -82,7 +82,7 @@
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
             data-translate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
         </button>
     </div>

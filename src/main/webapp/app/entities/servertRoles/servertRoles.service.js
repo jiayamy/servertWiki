@@ -24,6 +24,10 @@
             	url:'api/servertType',
             	method:'GET',
             	isArray:true
+            },
+            getLevelInfo:{
+            	url:'api/getLevelInfo',
+            	method:'POST'
             }
         });
 

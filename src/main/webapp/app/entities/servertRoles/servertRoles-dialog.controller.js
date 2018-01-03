@@ -38,7 +38,10 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.user.id !== null) {
+            vm.servant.type = vm.servant.info.servertType;
+            vm.servant.servertId = vm.servant.info.servertId;
+            console.log(vm.servant.id);
+            if (vm.servant.id != null) {
             	ServertRolesService.update(vm.servant, onSaveSuccess, onSaveError);
             } else {
             	ServertRolesService.save(vm.servant, onSaveSuccess, onSaveError);
@@ -57,7 +60,7 @@
         }
         
         $scope.getServantList = function(){
-        	vm.servantList = vm.servant.type.servertInfos;
+        	vm.servantList = vm.servant.typeList.servertInfos;
         	
         }
         
@@ -67,7 +70,13 @@
         		alert('level should be 1~100');
         		vm.servant.level = "";
         	}
-        	
+        	var servert = new Object();
+        	servert.servertId = vm.servant.info.servertId;
+        	servert.level = vm.servant.level;
+        	ServertRolesService.getLevelInfo(servert, function(result){
+        		vm.servant.atk = result.atk;
+        		vm.servant.hp = result.hp;
+        	})
         }
     }
 })();

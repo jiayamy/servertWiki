@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.servert.wiki.domain.entities.ServertTypeInfo;
 
 @Repository
-public interface ServertTypeRepository extends JpaRepository<ServertTypeInfo, Long>{
+public interface ServertTypeRepository extends JpaRepository<ServertTypeInfo, Integer>{
 
 }
