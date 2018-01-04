@@ -21,7 +21,8 @@
                     controller: 'ServertRolesController',
                     controllerAs: 'vm'
                 }
-            },            params: {
+            },
+            params: {
                 page: {
                     value: '1',
                     squash: true

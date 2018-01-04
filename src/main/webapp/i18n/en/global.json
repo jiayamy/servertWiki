@@ -40,6 +40,7 @@
                 "audits": "Audits",
                 "apidocs": "API",
                 "database": "Database",
+                "servantLevel": "servant level config",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "language": "Language"

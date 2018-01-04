@@ -1,5 +1,6 @@
 package com.servert.wiki.service.entities;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -24,6 +25,12 @@ public class ServertLevelInfoService {
 		return Optional.of(
 				servertLevelInfoRepository.findOneByServertIdAndLevel(servertLevelInfoVM.getServertId(), servertLevelInfoVM.getLevel()))
 				.map(ServertLevelInfoVM::new);
+	}
+	
+	public Optional<List<ServertLevelInfoVM>> getAllServertLevelInfo(){
+		servertLevelInfoRepository.findAll();
+		
+		return null;
 	}
 
 }
