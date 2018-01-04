@@ -71,6 +71,9 @@
         		vm.servant.level = "";
         	}
         	var servert = new Object();
+        	if(vm.servant.info == null){
+        		alert("choose the type of servant firstly");
+        	}
         	servert.servertId = vm.servant.info.servertId;
         	servert.level = vm.servant.level;
         	ServertRolesService.getLevelInfo(servert, function(result){

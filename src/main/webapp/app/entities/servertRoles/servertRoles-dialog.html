@@ -21,7 +21,7 @@
 	        </div>
         <div class="form-group">
             <label class="control-label" data-translate="entities.servert.name">ServantName</label>
-            <select class="form-control" name="langKey" ng-model="vm.servant.info"
+            <select class="form-control" name="langKey" ng-model="vm.servant.info" id="servantInfo"
 	                    ng-options="servertInfo.servertName for servertInfo in vm.servantList track by servertInfo.id">
 	        </select>
         </div>
@@ -37,7 +37,8 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="entities.servert.level">level</label>
-            <input class="form-control" name="email" ng-change="getServantAHInfo()" ng-model="vm.servant.level">
+            <input id="servert-level-range" type="text" name="servert-level-range" value="1;100"/>
+            <input id="servantLevel" class="form-control" name="email" ng-change="getServantAHInfo()" ng-model="vm.servant.level" style="display:none" readonly="readonly">
         </div>
         <div class="form-group">
         	<div class="col-md-6">
@@ -90,3 +91,10 @@
         </button>
     </div>
 </form>
+
+<script>
+jQuery(document).ready(function() {       
+   // initiate layout and plugins
+   ComponentsIonSliders.init();
+});
+</script>
